@@ -45,6 +45,10 @@ Here are some of the key dependencies used in this project:
 - Flutter SDK version `3.24.3` or later
 - Dart SDK version `3.5.3` or later
 
+### API key
+- get an API key from [newsapi](https://newsapi.org/)
+- replace you API key in `constants` file
+
 ### Installation
 
 1. Clone the repository:
