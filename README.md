@@ -49,7 +49,7 @@ Here are some of the key dependencies used in this project:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/news_app_2.git
+   git clone [NEWS APP](https://github.com/OracleMatrix/news_app_2)
    cd news_app_2
    ```
 
