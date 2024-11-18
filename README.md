@@ -89,6 +89,9 @@ lib/
 - **Category Filter**: Use the horizontal scroll list to filter articles by categories.
 - **Open File**: Tap on an image to view it or play a video.
 
+### Show your support
+Leave a ⭐ if you like this project
+
 ## How to Contribute
 
 Feel free to fork this project and submit pull requests. For major changes, please open an issue first to discuss what you would like to change.
