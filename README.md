@@ -1,16 +1,32 @@
-# news_app_2
+<div align="center">
+<h1 align="center">PantoBazi</h1>
+<img src="https://drive.google.com/file/d/1VSyDoaj60TQ2YQqFXbb17BUGbYhnwTDU/view?usp=drive_link" alt="PantoBazi" align="center" width="80" height="80">
+<br />
+<img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-blue.svg" /><br>
+<br>
+A fast, different, and smooth Charades game
+<img src="https://drive.google.com/file/d/1VSyDoaj60TQ2YQqFXbb17BUGbYhnwTDU/view?usp=drive_link" alt="PantoBazi" width="500" height="500">
+</div>
 
-A new Flutter project.
+***
+![PantoBazi](https://drive.google.com/file/d/1gBDqumNXSLjP0hAkVVFCyh1Jmv8eu4qp/view?usp=drive_link)
 
-## Getting Started
+### Installation
+```
+git clone https://github.com/OracleMatrix/news_app_2.git
+git clone 
+cd PantoBazi
 
-This project is a starting point for a Flutter application.
+```
 
-A few resources to get you started if this is your first Flutter project:
+### Usage
+```
+write use command here
+```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Contributing
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### License
+This project is licensed under the mit license
+### Show your support
+Leave a ⭐ if you like this project
