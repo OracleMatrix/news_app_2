@@ -92,10 +92,10 @@ lib/
 ## Show your support
 - Leave a ⭐ if you like this project
 
-## How to Contribute
+### How to Contribute
 
 Feel free to fork this project and submit pull requests. For major changes, please open an issue first to discuss what you would like to change.
 
-## License
+### License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
