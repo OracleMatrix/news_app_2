@@ -1,5 +1,6 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:news_app_2/Pages/home_page.dart';
 import 'package:news_app_2/Providers/get_all_news_api_provider.dart';
 import 'package:news_app_2/Providers/internet_status_provider.dart';
@@ -33,10 +34,12 @@ class MyApp extends StatelessWidget {
     return AdaptiveTheme(
       initial: AdaptiveThemeMode.system,
       light: ThemeData(
+        fontFamily: GoogleFonts.poppins().fontFamily,
         brightness: Brightness.light,
         useMaterial3: true,
       ),
       dark: ThemeData(
+        fontFamily: GoogleFonts.poppins().fontFamily,
         brightness: Brightness.dark,
         useMaterial3: true,
       ),
