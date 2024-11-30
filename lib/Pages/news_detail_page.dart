@@ -8,16 +8,17 @@ import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class NewsDetailPage extends StatelessWidget {
-  final String author, content, imageUrl, url, source;
+  final String content, imageUrl, url, source, title;
   final DateTime dateTime;
+
   const NewsDetailPage({
     super.key,
-    required this.author,
     required this.content,
     required this.imageUrl,
     required this.url,
     required this.dateTime,
     required this.source,
+    required this.title,
   });
 
   @override
@@ -27,6 +28,15 @@ class NewsDetailPage extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            title: Consumer<GetAllNewsApiProvider>(
+              builder: (context, value, child) => Text(
+                title,
+                textDirection:
+                    value.isRTL(title) ? TextDirection.rtl : TextDirection.ltr,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
             actions: [
               IconButton(
                 onPressed: () => Share.share(url),
@@ -77,18 +87,6 @@ class NewsDetailPage extends StatelessWidget {
                     Provider.of<GetAllNewsApiProvider>(context).isRTL(content)
                         ? TextDirection.rtl
                         : TextDirection.ltr,
-              ),
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: ListTile(
-              leading: const Icon(
-                Icons.person,
-              ),
-              title: Text(
-                "Author: $author",
-                overflow: TextOverflow.ellipsis,
-                maxLines: 1,
               ),
             ),
           ),

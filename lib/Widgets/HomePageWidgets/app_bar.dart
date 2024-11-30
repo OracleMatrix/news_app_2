@@ -12,35 +12,32 @@ class MySliverAppBar extends StatelessWidget {
     return SliverAppBar(
       floating: true,
       snap: true,
-      expandedHeight: 140,
       flexibleSpace: AppBar(
-        toolbarHeight: 140,
-        title: Column(
-          children: [
-            const Text("N E W S"),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Consumer<GetAllNewsApiProvider>(
-                builder: (context, provider, child) => SearchBar(
-                  hintText: "search...",
-                  controller: provider.controller,
-                  onTap: () => provider.controller.clear(),
-                  onSubmitted: (value) async {
-                    provider.reset();
-                    if (provider.controller.text.isEmpty) {
-                      await provider.fetchAllNews(query: 'economy');
-                    } else {
-                      await provider.fetchAllNews(
-                        query: provider.controller.text,
-                      );
-                    }
-                  },
-                ),
-              ),
-            ),
-          ],
-        ),
+        title: const Text("N E W S"),
         centerTitle: true,
+      ),
+      bottom: PreferredSize(
+        preferredSize: const Size.fromHeight(60),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Consumer<GetAllNewsApiProvider>(
+            builder: (context, provider, child) => SearchBar(
+              hintText: "search...",
+              controller: provider.controller,
+              onTap: () => provider.controller.clear(),
+              onSubmitted: (value) async {
+                provider.reset();
+                if (provider.controller.text.isEmpty) {
+                  await provider.fetchAllNews(query: 'economy');
+                } else {
+                  await provider.fetchAllNews(
+                    query: provider.controller.text,
+                  );
+                }
+              },
+            ),
+          ),
+        ),
       ),
     );
   }

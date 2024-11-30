@@ -1,32 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:news_app_2/API/api_service.dart';
 import 'package:news_app_2/Models/all_news_model.dart';
+import 'package:news_app_2/Models/on_error_model.dart';
 
 class GetAllNewsApiProvider with ChangeNotifier {
   final ApiService _apiService = ApiService();
   AllNewsModel? model;
+  ErrorResponse? error;
   bool isLoading = false;
   bool isFetchingMore = false;
+  bool onError = false;
   bool hasMorePages = true;
   int currentPage = 1;
   List<Article> articles = [];
+  Set<String> uniqueArticleTitles = {};
   final TextEditingController controller = TextEditingController();
 
-  Future<void> fetchAllNews({String? query = 'economy'}) async {
+  Future<void> fetchAllNews({String? query = 'global'}) async {
     isLoading = true;
     hasMorePages = true;
 
-    model = await _apiService.getAllNews(query: query, page: currentPage);
+    try {
+      model = await _apiService.getAllNews(query: query, page: currentPage);
 
-    if (model?.articles != null) {
-      articles.addAll(model!.articles!);
-      if (articles.length >= (model!.totalResults ?? 0)) {
-        hasMorePages = false;
+      if (model?.articles != null) {
+        onError = false;
+        articles.addAll(model!.articles!);
+        if (articles.length >= (model!.totalArticles ?? 0)) {
+          hasMorePages = false;
+        }
       }
+    } catch (e) {
+      debugPrint(e.toString());
+      onError = true;
+      error = ErrorResponse.fromJson({
+        "errors": [e.toString()]
+      });
+    } finally {
+      isLoading = false;
+      notifyListeners();
     }
-
-    isLoading = false;
-    notifyListeners();
   }
 
   Future<void> fetchMoreNews({String? query = 'economy'}) async {
@@ -40,7 +53,7 @@ class GetAllNewsApiProvider with ChangeNotifier {
 
     if (newModel?.articles != null) {
       articles.addAll(newModel!.articles!);
-      if (articles.length >= (newModel.totalResults ?? 0)) {
+      if (articles.length >= (newModel.totalArticles ?? 0)) {
         hasMorePages = false;
       }
     }
@@ -78,7 +91,7 @@ class GetAllNewsApiProvider with ChangeNotifier {
     } catch (error) {
       isLoading = false;
       notifyListeners();
-      debugPrint("Error during refresh: $error");
+      throw Exception("Error during refresh: $error");
     }
   }
 }

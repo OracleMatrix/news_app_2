@@ -25,6 +25,7 @@ class PostCardWidget extends StatelessWidget {
               builder: (context, title, child) {
                 return Text(
                   title ?? '',
+                  style: const TextStyle(fontWeight: FontWeight.bold),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 );
@@ -32,7 +33,7 @@ class PostCardWidget extends StatelessWidget {
             ),
           ),
           Selector<GetAllNewsApiProvider, String?>(
-            selector: (_, provider) => provider.articles[index].urlToImage,
+            selector: (_, provider) => provider.articles[index].image,
             builder: (context, imageUrl, child) {
               return PostImageWidget(
                 imageUrl: imageUrl,

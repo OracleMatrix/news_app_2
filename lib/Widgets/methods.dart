@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:news_app_2/Providers/get_all_news_api_provider.dart';
 import 'package:provider/provider.dart';
 
-Widget buildCategoryItem(BuildContext context, String category) {
+Widget buildCategoryItem(BuildContext context, String category, String emoji) {
   return InkWell(
     borderRadius: BorderRadius.circular(12),
     onTap: () {
@@ -18,12 +18,12 @@ Widget buildCategoryItem(BuildContext context, String category) {
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        color: Colors.grey[900],
+        // color: Colors.grey[500],
       ),
       alignment: Alignment.center,
       child: Text(
-        category,
-        style: const TextStyle(color: Colors.white),
+        "$category $emoji",
+        // style: const TextStyle(color: Colors.white),
       ),
     ),
   );

@@ -1,18 +1,15 @@
 class AllNewsModel {
-  String? status;
-  int? totalResults;
+  int? totalArticles;
   List<Article>? articles;
 
   AllNewsModel({
-    this.status,
-    this.totalResults,
+    this.totalArticles,
     this.articles,
   });
 
   factory AllNewsModel.fromJson(Map<String, dynamic> json) {
     return AllNewsModel(
-      status: json['status'],
-      totalResults: json['totalResults'],
+      totalArticles: json['totalArticles'],
       articles: (json['articles'] as List<dynamic>?)
           ?.map(
             (e) => Article.fromJson(e),
@@ -25,32 +22,29 @@ class AllNewsModel {
 class Article {
   Article({
     this.source,
-    this.author,
     this.title,
     this.description,
     this.url,
-    this.urlToImage,
+    this.image,
     this.publishedAt,
     this.content,
   });
 
   Source? source;
-  String? author;
   String? title;
   String? description;
   String? url;
-  String? urlToImage;
+  String? image;
   DateTime? publishedAt;
   String? content;
 
   factory Article.fromJson(Map<String, dynamic> json) {
     return Article(
       source: Source.fromJson(json["source"]),
-      author: json['author'],
       title: json['title'],
       description: json['description'],
       url: json['url'],
-      urlToImage: json['urlToImage'],
+      image: json['image'],
       publishedAt: json['publishedAt'] != null
           ? DateTime.parse(json['publishedAt'])
           : null,
@@ -61,16 +55,16 @@ class Article {
 
 class Source {
   Source({
-    this.id,
+    this.url,
     this.name,
   });
 
-  String? id;
+  String? url;
   String? name;
 
   factory Source.fromJson(Map<String, dynamic> json) {
     return Source(
-      id: json['id'] ?? '',
+      url: json['url'] ?? '',
       name: json['name'],
     );
   }

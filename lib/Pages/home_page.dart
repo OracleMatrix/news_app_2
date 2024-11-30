@@ -43,11 +43,14 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: Consumer<GetAllNewsApiProvider>(
         builder: (context, provider, child) {
+          if (provider.onError) {
+            return const NoDataAvailableWidget();
+          }
           if (provider.articles.isEmpty && provider.controller.text.isEmpty) {
             return const Center(
               child: CircularProgressIndicator(),
             );
-          } else if (provider.model!.totalResults == 0) {
+          } else if (provider.model!.totalArticles == 0) {
             return const NoResultScreenWithAppBar();
           } else if (!Provider.of<InternetStatusProvider>(context)
               .isConnected) {
@@ -96,7 +99,7 @@ class HomePage extends StatelessWidget {
                         child: Text("Total Results: $total"),
                       ),
                       selector: (_, provider) =>
-                          provider.model!.totalResults.toString(),
+                          provider.model!.totalArticles.toString(),
                     ),
                   ),
                   Consumer<GetAllNewsApiProvider>(
@@ -113,7 +116,8 @@ class HomePage extends StatelessWidget {
                       }
                       if (api.model?.articles == null ||
                           api.articles.isEmpty ||
-                          api.model!.totalResults == 0) {
+                          api.model!.totalArticles == 0 ||
+                          api.onError) {
                         return const SliverToBoxAdapter(
                           child: NoDataAvailableWidget(),
                         );
@@ -167,10 +171,9 @@ class HomePage extends StatelessWidget {
                                   builder: (context) {
                                     final Article data = api.articles[index];
                                     return NewsDetailPage(
-                                      author:
-                                          api.articles[index].author.toString(),
+                                      title: data.title.toString(),
                                       content: data.content.toString(),
-                                      imageUrl: data.urlToImage.toString(),
+                                      imageUrl: data.image.toString(),
                                       url: data.url.toString(),
                                       dateTime: data.publishedAt!,
                                       source: data.source!.name.toString(),

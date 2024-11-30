@@ -6,6 +6,7 @@ import 'package:timeago/timeago.dart' as timeago;
 class PostsListTileWidget extends StatelessWidget {
   final GetAllNewsApiProvider api;
   final int index;
+
   const PostsListTileWidget({
     super.key,
     required this.index,
@@ -39,7 +40,11 @@ class PostsListTileWidget extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Source: ${source ?? "Unknown"}"),
+                Text(
+                  "Source: ${source ?? "Unknown"}",
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
                 Text(
                   timeago.format(
                     publishedDate ?? DateTime.now(),
