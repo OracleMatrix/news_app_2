@@ -28,7 +28,7 @@ class MySliverAppBar extends StatelessWidget {
               onSubmitted: (value) async {
                 provider.reset();
                 if (provider.controller.text.isEmpty) {
-                  await provider.fetchAllNews(query: 'economy');
+                  await provider.fetchAllNews(query: 'global');
                 } else {
                   await provider.fetchAllNews(
                     query: provider.controller.text,

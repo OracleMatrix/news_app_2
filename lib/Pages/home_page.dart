@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
           apiProvider.hasMorePages) {
         apiProvider.fetchMoreNews(
           query: apiProvider.controller.text.isEmpty
-              ? 'economy'
+              ? 'global'
               : apiProvider.controller.text,
         );
       }
@@ -50,7 +50,7 @@ class HomePage extends StatelessWidget {
             return const Center(
               child: CircularProgressIndicator(),
             );
-          } else if (provider.model!.totalArticles == 0) {
+          } else if (provider.model!.totalResults == 0) {
             return const NoResultScreenWithAppBar();
           } else if (!Provider.of<InternetStatusProvider>(context)
               .isConnected) {
@@ -99,7 +99,7 @@ class HomePage extends StatelessWidget {
                         child: Text("Total Results: $total"),
                       ),
                       selector: (_, provider) =>
-                          provider.model!.totalArticles.toString(),
+                          provider.model!.totalResults.toString(),
                     ),
                   ),
                   Consumer<GetAllNewsApiProvider>(
@@ -116,7 +116,7 @@ class HomePage extends StatelessWidget {
                       }
                       if (api.model?.articles == null ||
                           api.articles.isEmpty ||
-                          api.model!.totalArticles == 0 ||
+                          api.model!.totalResults == 0 ||
                           api.onError) {
                         return const SliverToBoxAdapter(
                           child: NoDataAvailableWidget(),
@@ -173,7 +173,7 @@ class HomePage extends StatelessWidget {
                                     return NewsDetailPage(
                                       title: data.title.toString(),
                                       content: data.content.toString(),
-                                      imageUrl: data.image.toString(),
+                                      imageUrl: data.urlToImage.toString(),
                                       url: data.url.toString(),
                                       dateTime: data.publishedAt!,
                                       source: data.source!.name.toString(),

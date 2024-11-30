@@ -1,17 +1,19 @@
-class ErrorResponse {
-  final List<String> errors;
+class Error {
+  String status;
+  String code;
+  String message;
 
-  ErrorResponse({required this.errors});
+  Error({
+    required this.status,
+    required this.code,
+    required this.message,
+  });
 
-  factory ErrorResponse.fromJson(Map<String, dynamic> json) {
-    return ErrorResponse(
-      errors: List<String>.from(json['errors'] ?? []),
+  factory Error.fromJson(Map<String, dynamic> json) {
+    return Error(
+      status: json['status'],
+      code: json['code'],
+      message: json['message'],
     );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'errors': errors,
-    };
   }
 }

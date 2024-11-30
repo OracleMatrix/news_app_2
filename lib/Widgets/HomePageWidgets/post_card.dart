@@ -33,7 +33,7 @@ class PostCardWidget extends StatelessWidget {
             ),
           ),
           Selector<GetAllNewsApiProvider, String?>(
-            selector: (_, provider) => provider.articles[index].image,
+            selector: (_, provider) => provider.articles[index].urlToImage,
             builder: (context, imageUrl, child) {
               return PostImageWidget(
                 imageUrl: imageUrl,

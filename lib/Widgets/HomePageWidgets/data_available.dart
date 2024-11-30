@@ -29,7 +29,7 @@ class NoDataAvailableWidget extends StatelessWidget {
                     onSubmitted: (value) async {
                       provider.reset();
                       if (provider.controller.text.isEmpty) {
-                        await provider.fetchAllNews(query: 'economy');
+                        await provider.fetchAllNews(query: 'global');
                       } else {
                         await provider.fetchAllNews(
                           query: provider.controller.text,
@@ -58,7 +58,7 @@ class NoDataAvailableWidget extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: Consumer<GetAllNewsApiProvider>(
                 builder: (context, value, child) => Text(
-                  "No Data Available\n${value.error?.errors.first ?? "An unexpected error occurred.\nPlease try again later."}",
+                  "No Data Available\n${value.error?.message ?? "An unexpected error occurred.\nPlease try again later."}",
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                     fontSize: 16,

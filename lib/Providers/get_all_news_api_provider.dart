@@ -6,7 +6,7 @@ import 'package:news_app_2/Models/on_error_model.dart';
 class GetAllNewsApiProvider with ChangeNotifier {
   final ApiService _apiService = ApiService();
   AllNewsModel? model;
-  ErrorResponse? error;
+  Error? error;
   bool isLoading = false;
   bool isFetchingMore = false;
   bool onError = false;
@@ -26,14 +26,13 @@ class GetAllNewsApiProvider with ChangeNotifier {
       if (model?.articles != null) {
         onError = false;
         articles.addAll(model!.articles!);
-        if (articles.length >= (model!.totalArticles ?? 0)) {
+        if (articles.length >= (model!.totalResults ?? 0)) {
           hasMorePages = false;
         }
       }
     } catch (e) {
-      debugPrint(e.toString());
       onError = true;
-      error = ErrorResponse.fromJson({
+      error = Error.fromJson({
         "errors": [e.toString()]
       });
     } finally {
@@ -53,7 +52,7 @@ class GetAllNewsApiProvider with ChangeNotifier {
 
     if (newModel?.articles != null) {
       articles.addAll(newModel!.articles!);
-      if (articles.length >= (newModel.totalArticles ?? 0)) {
+      if (articles.length >= (newModel.totalResults ?? 0)) {
         hasMorePages = false;
       }
     }

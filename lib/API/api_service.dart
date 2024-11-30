@@ -14,16 +14,16 @@ class ApiService {
 
   Future<AllNewsModel?> getAllNews({String? query, int page = 1}) async {
     final String everythingUrl =
-        "https://gnews.io/api/v4/search?q=$query&sortBy=publishedAt&page=$page&apikey=$api";
+        "https://newsapi.org/v2/everything?q=$query&sortBy=publishedAt&page=$page&pageSize=20&apiKey=$api";
 
     try {
       final response = await _dio.get(everythingUrl);
 
       if (response.statusCode == 200) {
         return AllNewsModel.fromJson(response.data);
-      } else if (response.statusCode == 403) {
-        final errorResponse = ErrorResponse.fromJson(response.data);
-        throw errorResponse.errors.join("\n").split('here: https://gnews.io/#pricing').first;
+      } else if (response.statusCode == 401) {
+        final errorResponse = Error.fromJson(response.data);
+        throw errorResponse.message;
       } else {
         throw Exception("Unexpected error occurred");
       }
