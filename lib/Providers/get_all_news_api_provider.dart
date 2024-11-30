@@ -42,7 +42,7 @@ class GetAllNewsApiProvider with ChangeNotifier {
     }
   }
 
-  Future<void> fetchMoreNews({String? query = 'economy'}) async {
+  Future<void> fetchMoreNews({String? query = 'global'}) async {
     if (isFetchingMore || !hasMorePages) return;
 
     isFetchingMore = true;
@@ -83,7 +83,7 @@ class GetAllNewsApiProvider with ChangeNotifier {
       reset();
 
       await fetchAllNews(
-        query: controller.text.isEmpty ? 'economy' : controller.text,
+        query: controller.text.isEmpty ? 'global' : controller.text,
       );
 
       isLoading = false;
