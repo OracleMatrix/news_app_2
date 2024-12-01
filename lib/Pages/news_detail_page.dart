@@ -8,7 +8,7 @@ import 'package:news_app_2/Widgets/NewDetailsPageWidgets/Mobile/show_image.dart'
 import 'package:provider/provider.dart';
 
 class NewsDetailPage extends StatelessWidget {
-  final String imageUrl, url, source, title, description, author;
+  final String imageUrl, url, source, title, description, author, content;
   final DateTime dateTime;
 
   const NewsDetailPage({
@@ -20,6 +20,7 @@ class NewsDetailPage extends StatelessWidget {
     required this.title,
     required this.description,
     required this.author,
+    required this.content,
   });
 
   @override
@@ -39,7 +40,10 @@ class NewsDetailPage extends StatelessWidget {
                     ),
             ),
           ),
-          ShowDescription(description: description),
+          ShowDescription(
+            description: description,
+            content: content,
+          ),
           SliverToBoxAdapter(
             child: ShowAuthor(author: author),
           ),

@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AdaptiveTheme(
-      initial: AdaptiveThemeMode.system,
+      initial: AdaptiveThemeMode.dark,
       light: ThemeData(
         fontFamily: GoogleFonts.poppins().fontFamily,
         brightness: Brightness.light,

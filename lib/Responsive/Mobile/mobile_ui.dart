@@ -99,6 +99,7 @@ SmartRefresher buildMobileUI(RefreshController refreshController,
                           builder: (context) {
                             final Article data = api.articles[index];
                             return NewsDetailPage(
+                              content: data.content.toString(),
                               author: data.author.toString(),
                               title: data.title.toString(),
                               description: data.description.toString(),

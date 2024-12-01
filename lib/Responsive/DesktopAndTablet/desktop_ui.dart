@@ -90,6 +90,7 @@ CustomScrollView buildDesktopUI(ScrollController scrollController) {
                         builder: (context) {
                           final Article data = api.articles[index];
                           return NewsDetailPageDesktopAndTablet(
+                            content: data.content.toString(),
                             author: data.author.toString(),
                             title: data.title.toString(),
                             description: data.description.toString(),

@@ -11,7 +11,7 @@ class MySliverAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverAppBar(
       floating: true,
-      snap: true,
+      snap: false,
       flexibleSpace: AppBar(
         title: const Text("N E W S"),
         centerTitle: true,

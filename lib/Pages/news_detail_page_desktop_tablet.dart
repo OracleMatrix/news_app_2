@@ -7,7 +7,7 @@ import 'package:news_app_2/Widgets/NewDetailsPageWidgets/Mobile/show_image.dart'
 import 'package:provider/provider.dart';
 
 class NewsDetailPageDesktopAndTablet extends StatelessWidget {
-  final String author, description, imageUrl, url, source, title;
+  final String author, description, imageUrl, url, source, title, content;
   final DateTime dateTime;
 
   const NewsDetailPageDesktopAndTablet({
@@ -19,6 +19,7 @@ class NewsDetailPageDesktopAndTablet extends StatelessWidget {
     required this.source,
     required this.description,
     required this.title,
+    required this.content,
   });
 
   @override
@@ -49,8 +50,11 @@ class NewsDetailPageDesktopAndTablet extends StatelessWidget {
                                     ),
                         ),
                       ),
-                      ShowImageInDeskAndTablet(
-                          description: description, author: author),
+                      ShowDescriptionAndContentWithAuthorInDeskAndTablet(
+                        description: description,
+                        author: author,
+                        content: content,
+                      ),
                     ],
                   ),
                   OpenSourceUrlDeskAndTablet(

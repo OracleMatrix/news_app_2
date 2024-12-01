@@ -6,6 +6,7 @@ import 'package:news_app_2/Responsive/DesktopAndTablet/tablet_ui.dart';
 import 'package:news_app_2/Responsive/Mobile/mobile_ui.dart';
 import 'package:news_app_2/Widgets/HomePageWidgets/Mobile/data_available.dart';
 import 'package:news_app_2/Widgets/HomePageWidgets/Mobile/no_result.dart';
+import 'package:news_app_2/Widgets/HomePageWidgets/drawer.dart';
 import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -40,6 +41,7 @@ class HomePage extends StatelessWidget {
     });
 
     return Scaffold(
+      drawer: const MyDrawer(),
       body: Consumer<GetAllNewsApiProvider>(
         builder: (context, provider, child) {
           if (provider.onError) {

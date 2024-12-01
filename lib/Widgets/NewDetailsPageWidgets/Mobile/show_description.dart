@@ -6,23 +6,38 @@ class ShowDescription extends StatelessWidget {
   const ShowDescription({
     super.key,
     required this.description,
+    required this.content,
   });
 
-  final String description;
+  final String description, content;
 
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Text(
-          description,
-          style: const TextStyle(fontSize: 16),
-          textAlign: TextAlign.justify,
-          textDirection:
-              Provider.of<GetAllNewsApiProvider>(context).isRTL(description)
-                  ? TextDirection.rtl
-                  : TextDirection.ltr,
+        child: Column(
+          children: [
+            Text(
+              description,
+              style: const TextStyle(fontSize: 16),
+              textAlign: TextAlign.justify,
+              textDirection:
+                  Provider.of<GetAllNewsApiProvider>(context).isRTL(description)
+                      ? TextDirection.rtl
+                      : TextDirection.ltr,
+            ),
+            const Divider(),
+            Text(
+              content,
+              style: const TextStyle(fontSize: 16),
+              textAlign: TextAlign.justify,
+              textDirection:
+                  Provider.of<GetAllNewsApiProvider>(context).isRTL(description)
+                      ? TextDirection.rtl
+                      : TextDirection.ltr,
+            )
+          ],
         ),
       ),
     );
